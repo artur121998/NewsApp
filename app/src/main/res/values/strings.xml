@@ -6,4 +6,7 @@
     <string name="app_auth_rememberme">Remember me</string>
     <string name="app_auth_forgot_password">Forgot Password?</string>
     <string name="app_auth_button_sign_in">SIGN IN</string>
+    <string name="app_auth_or">OR</string>
+    <string name="app_auth_button_login_with_google">Login with Google</string>
+    <string name="app_auth_button_login_with_facebook">Login with Facebook</string>
 </resources>

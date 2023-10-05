@@ -1,5 +1,6 @@
 package com.loc.newsapp.activity.auth
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -18,6 +19,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
@@ -29,15 +31,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.loc.newsapp.R
+import com.loc.newsapp.ui.theme.BlackFont
 import com.loc.newsapp.ui.theme.Typography
 import com.loc.newsapp.ui.theme.darkBlue
+import com.loc.newsapp.ui.theme.gray
 import com.loc.newsapp.ui.theme.greyBorder
+import com.loc.newsapp.ui.theme.greyButtonBorder
 import com.loc.newsapp.ui.theme.placeholder
 import com.loc.newsapp.ui.theme.switchColor
 
@@ -144,42 +150,95 @@ fun AuthForm() {
                         modifier = Modifier.align(Alignment.CenterEnd)
                     )
                 }
-                Button(
-                    onClick = { /*TODO*/ },
+                ButtonSignIn()
+                Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(58.dp)
-                        .padding(start = 52.dp, end = 52.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = switchColor
-                    ),
-                    shape = RoundedCornerShape(15),
-                    contentPadding = PaddingValues(14.dp)
+                        .padding(start = 23.dp, end = 23.dp)
+                        .offset(y = 50.dp)
                 ) {
-                    Box(modifier = Modifier.fillMaxWidth()) {
-                        Text(
-                            text = stringResource(id = R.string.app_auth_button_sign_in),
-                            style = Typography.bodyMedium,
-                            modifier = Modifier.align(Alignment.Center)
-                        )
-                        Box(
-                            modifier = Modifier
-                                .width(30.dp)
-                                .height(30.dp)
-                                .background(darkBlue, CircleShape)
-                                .align(Alignment.CenterEnd)
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_arrow_right),
-                                contentDescription = null,
-                                modifier = Modifier.align(Alignment.Center)
-                            )
-                        }
-                    }
-
+                    Text(
+                        text = stringResource(id = R.string.app_auth_or),
+                        style = Typography.bodyMedium,
+                        color = gray,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                    ButtonLoginWith(
+                        logo = painterResource(id = R.drawable.google),
+                        text = stringResource(id = R.string.app_auth_button_login_with_google)
+                    )
+                    ButtonLoginWith(
+                        logo = painterResource(id = R.drawable.facebook),
+                        text = stringResource(id = R.string.app_auth_button_login_with_facebook)
+                    )
                 }
             }
 
+        }
+    }
+}
+
+@Composable
+fun ButtonLoginWith(logo: Painter, text: String) {
+    OutlinedButton(
+        onClick = { /*TODO*/ },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(58.dp),
+        border = BorderStroke(1.dp, color = greyButtonBorder),
+        shape = RoundedCornerShape(15)
+    ) {
+        Icon(
+            painter = logo,
+            contentDescription = null,
+            modifier = Modifier
+                .width(26.dp)
+                .height(26.dp),
+            tint = Color.Unspecified
+        )
+        Text(
+            text = text,
+            style = Typography.bodyMedium,
+            color = BlackFont,
+            modifier = Modifier.padding(start = 20.dp)
+        )
+    }
+}
+
+@Composable
+fun ButtonSignIn() {
+    Button(
+        onClick = { /*TODO*/ },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(58.dp)
+            .padding(start = 23.dp, end = 23.dp)
+            .offset(y = 21.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = switchColor
+        ),
+        shape = RoundedCornerShape(15),
+        contentPadding = PaddingValues(14.dp)
+    ) {
+        Box(modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = stringResource(id = R.string.app_auth_button_sign_in),
+                style = Typography.bodyMedium,
+                modifier = Modifier.align(Alignment.Center)
+            )
+            Box(
+                modifier = Modifier
+                    .width(30.dp)
+                    .height(30.dp)
+                    .background(darkBlue, CircleShape)
+                    .align(Alignment.CenterEnd)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_arrow_right),
+                    contentDescription = null,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
         }
     }
 }
