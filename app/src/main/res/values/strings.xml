@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">NewsApp</string>
+    <string name="app_name">EventHub</string>
+    <string name="app_auth_signin">Sign in</string>
+    <string name="app_auth_placeholder_email">abc@email.com</string>
+    <string name="app_auth_placeholder_password">Your password</string>
+    <string name="app_auth_rememberme">Remember me</string>
+    <string name="app_auth_forgot_password">Forgot Password?</string>
+    <string name="app_auth_button_sign_in">SIGN IN</string>
 </resources>
